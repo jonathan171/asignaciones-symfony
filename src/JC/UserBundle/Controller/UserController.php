@@ -61,6 +61,9 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+
+            $successMessage= $this->get('translator')->trans('The user has been created.');
+            $this->addFlash('mensaje', $successMessage);
             
             return $this->redirectToRoute('jc_user_index');
         }
