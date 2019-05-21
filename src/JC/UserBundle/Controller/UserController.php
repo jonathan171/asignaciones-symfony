@@ -12,13 +12,13 @@ class UserController extends Controller
        $em =$this->getDoctrine()->getManager();
 
        $users= $em->getRepository('JCUserBundle:User')->findAll();
-       $res = 'Lista de usuarios : <br/>';
+      /* $res = 'Lista de usuarios : <br/>';
 
        foreach ($users as $user) {
      
         $res .= 'Usuario: ' .$user->getUsername(). ' - Email: '.$user->getEmail(). '<br />';
        }
-       return new Response($res);
+       return new Response($res); */
     }
 
     public function viewAction($id){
