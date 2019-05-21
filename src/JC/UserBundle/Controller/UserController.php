@@ -19,6 +19,8 @@ class UserController extends Controller
         $res .= 'Usuario: ' .$user->getUsername(). ' - Email: '.$user->getEmail(). '<br />';
        }
        return new Response($res); */
+
+       return $this->render('JCUserBundle:User:index.html.twig', array('users'=>$users));
     }
 
     public function viewAction($id){
