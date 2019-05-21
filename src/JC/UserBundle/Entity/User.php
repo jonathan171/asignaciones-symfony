@@ -3,14 +3,16 @@
 namespace JC\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="JC\UserBundle\Entity\UserRepository")
+  * @ORM\HasLifecycleCallbacks()
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var integer
@@ -301,4 +303,35 @@ class User
     {
         return $this->updateAt;
     }
+            /**
+     * @ORM\PrePersist
+     */
+        public function setCreatedAtValue()
+    {
+        $this->createdAt = new \DateTime();
+    }
+    /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        $this->updateAt = new \DateTime();
+    }
+        public function getRoles()
+    {
+        
+    }
+    
+    public function getSalt()
+    {
+        
+    }
+    
+    public function eraseCredentials()
+    {
+        
+    }
+    
+    
 }
