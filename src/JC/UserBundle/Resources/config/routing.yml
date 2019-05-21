@@ -26,3 +26,10 @@ jc_user_view:
 jc_user_delete:
    path:  /user/delete/{id}
    defaults: { _controller: JCUserBundle:User:delete }
+
+jc_user_redirect_add:
+    path: /user/create
+    defaults:
+        _controller: JCUserBundle:User:add
+        path: /user/add
+        permanent: true 
